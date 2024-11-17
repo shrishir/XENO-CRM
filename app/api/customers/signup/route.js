@@ -7,15 +7,14 @@ export async function POST(request) {
 
   await dbConnect();
 
-  // checking if user alraedy exists
+  // checking if user already exists
   const existingCustomer = await Customer.findOne({ email });
   if (existingCustomer) {
     return new Response(JSON.stringify({ error: 'Customer already exists' }), { status: 400 });
   }
 
   // hash the password for security reasons
-  //you dont want you db admin to see the password
-  //note that hashing is irreversible unlike encryption!!!!
+  
   const hashedPassword = await bcrypt.hash(password, 10);
 
   // create a new customer
@@ -27,8 +26,7 @@ export async function POST(request) {
 
   try {
     const savedCustomer = await customer.save();
-    // keep status codes handy
-    //might get asked in the interview (why 201 and not 200)
+    
     return new Response(JSON.stringify({msg: "user created successfully!!"}), { status: 201 }); 
   } catch (error) {
     return new Response(JSON.stringify({ error: error.message }), { status: 500 });
