@@ -70,10 +70,11 @@ const Home = () => {
       ) : (
         <p>Please sign up or log in.</p>
       )}
-        <h1 className="text-3xl font-bold mb-4">Welcome to CRM by ssg</h1>
+        <h1 className="text-3xl font-bold mb-4">XENO - CRM </h1>
         <p className="mb-6">
           Manage your customers and orders seamlessly with our intuitive CRM platform.
         </p>
+        <p className="text-l  mb-4">By Shrishir Srivatsa </p>
         <button 
           onClick={handleGetStarted} 
           className="w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600 transition duration-200"
